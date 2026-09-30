@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Conservantes TATS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#eef3f1;--card:#fff;--ink:#1c2a27;--mute:#5d6f6a;--line:#d5dfdb;--ok:#0d6b5b;--okbg:#dcf1ea;--opt:#8a6d1c;--optbg:#f6efd6;--no:#a8443b;--nobg:#f6e1de;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#121a18;--card:#1b2724;--ink:#e6efec;--mute:#93a7a1;--line:#2c3c38;--ok:#5fd3b9;--okbg:#173d35;--opt:#e0c265;--optbg:#3a3216;--no:#f09088;--nobg:#3d201d}}
+:root[data-theme="dark"]{--bg:#121a18;--card:#1b2724;--ink:#e6efec;--mute:#93a7a1;--line:#2c3c38;--ok:#5fd3b9;--okbg:#173d35;--opt:#e0c265;--optbg:#3a3216;--no:#f09088;--nobg:#3d201d}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.45 "Bricolage Grotesque",system-ui,-apple-system,"Segoe UI",sans-serif}
+main{max-width:640px;margin:0 auto;padding:20px 16px 48px}
+h1{font-size:28px;font-weight:800;margin:8px 0 4px;letter-spacing:-.02em}
+.sub{color:var(--mute);margin:0 0 20px}
+.form{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;display:grid;gap:14px}
+label{font-weight:600;font-size:14px;display:block;margin-bottom:6px}
+select,input{width:100%;font:inherit;font-size:17px;padding:12px;border:1.5px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink)}
+select:focus,input:focus,button:focus-visible{outline:3px solid var(--ok);outline-offset:1px}
+.meta{font-size:13px;color:var(--mute)}
+.res{margin-top:20px;display:grid;gap:10px}
+.item{background:var(--card);border:1px solid var(--line);border-left:6px solid var(--line);border-radius:12px;padding:14px}
+.item.S{border-left-color:var(--ok)}.item.O{border-left-color:var(--opt)}
+.top{display:flex;justify-content:space-between;align-items:baseline;gap:10px;flex-wrap:wrap}
+.nm{font-weight:600}
+.qty{font-size:30px;font-weight:800;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.qty small{font-size:16px;font-weight:600;color:var(--mute)}
+.tag{font-size:12px;font-weight:600;padding:2px 9px;border-radius:99px;display:inline-block;margin-top:2px}
+.S .tag{background:var(--okbg);color:var(--ok)}.O .tag{background:var(--optbg);color:var(--opt)}
+.note{font-size:14px;color:var(--mute);margin:6px 0 0}
+.sol{font-size:13px;margin:6px 0 0;padding:6px 10px;background:var(--bg);border-radius:8px}
+.no{background:var(--nobg);color:var(--no);border-radius:12px;padding:12px 14px;font-size:14px}
+h2{font-size:15px;margin:18px 0 0;color:var(--mute);font-weight:600}
+details{margin-top:24px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 14px;font-size:14px}
+summary{font-weight:600;cursor:pointer}
+details ul{padding-left:18px;margin:10px 0 0}details li{margin-bottom:6px}
+.empty{color:var(--mute);text-align:center;padding:24px 0}
+</style>
+</head>
+<body>
+<main>
+<h1>Conservantes TATS</h1>
+<p class="sub">Escolha a receita, informe o peso e veja quanto de cada conservante usar.</p>
+
+<div class="form">
+  <div><label for="rec">Receita</label><select id="rec"></select></div>
+  <div><label for="w">Peso da receita pronta (g)</label><input id="w" type="number" inputmode="decimal" min="0" step="any" placeholder="Ex.: 500"></div>
+  <div class="meta" id="meta"></div>
+</div>
+
+<div class="res" id="res"><div class="empty">Informe o peso para calcular.</div></div>
+
+<details>
+<summary>Observações importantes</summary>
+<ul>
+<li>Doses mínimas sugeridas, com base na IN 211/2023 da Anvisa. São ponto de partida para testes: aumente aos poucos, sempre abaixo do limite legal.</li>
+<li>Quantidades abaixo de 0,1 g: use balança de precisão (0,01 g) ou solução-mãe (10 g de conservante em 90 mL de água; 1 mL = 0,1 g). Para o tocoferol (óleo), dilua no próprio óleo/gordura da receita.</li>
+<li>Propionato de cálcio reage com o fermento químico e reduz o crescimento: em bolos e cookies use o propionato de sódio.</li>
+<li>Sorbato e propionato funcionam melhor com pH abaixo de 6. Bolos têm pH mais alto (~7): o frio, a embalagem fechada e a higiene continuam essenciais.</li>
+<li>Chocolates, bombons com chocolate e TATS Coin: a norma não permite sorbato, propionato, ascórbico nem tocoferol. A validade depende de baixa umidade e embalagem com barreira.</li>
+<li>Todo conservante usado deve entrar na lista de ingredientes com função e nome, e a tabela nutricional deve ser atualizada.</li>
+<li>A categoria de cada produto foi definida por analogia: confirme com a nutricionista. Faça teste de prateleira antes de alterar a validade.</li>
+</ul>
+</details>
+</main>
+
+<script>
+const NAMES=["Sorbato de potássio (INS 202)","Ácido cítrico (INS 330)","Ácido ascórbico (INS 300)","Propionato de cálcio (INS 282)","Propionato de sódio (INS 281)","Vitamina E – tocoferóis (INS 306/307b)"];
+const S=(d,n)=>["S",d,n],O=(d,n)=>["O",d,n],X=null;
+const T="Pode talhar o leite e alterar o sabor – não recomendado.";
+const NA="Na massa.";
+// [nome, tipo (f=fermento químico, c=cremoso, x=outro), lote g, [sorb, cít, asc, pCa, pNa, vitE]]
+const R=[
+["Marshmallow","x",300,[X,S(.5,"Baixa levemente o pH e ajuda na estabilidade da clara. Manter em embalagem fechada."),O(.3),X,X,O(0,"Teor de gordura baixo – efeito desprezível.")]],
+["Doce de Leite","x",400,[S(.5,"Único conservante permitido no doce de leite. Adicionar ao final do cozimento, já fora do fogo."),X,X,X,X,X]],
+["Brigadeiro de Pote","c",480,[S(.4,"Adicionar ao final do cozimento."),O(.5,T),O(.3),O(1),O(1),S(.025,"Protege a gordura do leite em pó. Dose muito pequena: usar solução-mãe.")]],
+["Tartelete Banoffee","f",1226,[S(.5,"No doce de leite/recheio."),S(.5,"Junto com o ascórbico, na banana."),S(.3,"Evita o escurecimento da banana – pode ser borrifado nas fatias."),O(1),S(1,"Na massa (o sódio não interfere no fermento químico como o cálcio)."),S(.056,"Na massa (farinha de amêndoas + óleo de coco).")]],
+["Trufa de Brigadeiro","x",556,[X,O(.5),X,X,X,X]],
+["Prestígio (docinho)","x",623,[X,O(.5),X,X,X,X]],
+["Brigadeiro de Pistache","x",538,[S(.5,"Adicionar ao final do cozimento."),O(.5),O(.3),O(1),O(1),S(.037,"Protege a gordura do pistache contra rancidez.")]],
+["Bolo de Prestígio","f",1974,[S(.5,"No recheio de coco e na cobertura."),O(.5),O(.3),O(1),S(1,NA),O(.032)]],
+["Bolo de Pistache e Frutas Vermelhas","f",2420,[S(.5,"Nos recheios (pistache e frutas)."),S(.5,"Na geleia de frutas vermelhas."),S(.3,"Na geleia de frutas vermelhas (cor)."),O(1),S(1,NA),O(.026)]],
+["Bolo de Coco","f",1544,[S(.5,"No recheio de castanha/leite de coco."),O(.5),O(.3),O(1),S(1,NA),O(.032)]],
+["Pão de Mel","f",1830,[S(.5,"No recheio de doce de leite."),O(.5),O(.3),O(1),S(1,NA),S(.052,"Na massa (óleo de girassol).")]],
+["Energyball","x",856,[X,O(.5),X,X,X,X]],
+["Cookie Proteico","f",920,[X,O(.5),O(.3),O(1),S(1,NA),S(.054,"Protege manteiga e chocolate contra rancidez.")]],
+["Cookie Proteico de Chocolate","f",935,[X,O(.5),O(.3),O(1),S(1,NA),S(.054,"Protege manteiga e chocolate contra rancidez.")]],
+["Bolo de Laranja","f",875,[O(.5),O(.5),S(.3,"Preserva cor e aroma da laranja."),O(1),S(1,NA),O(.038)]],
+["Bolo de Cenoura com Brigadeiro","f",1068,[S(.5,"No brigadeiro de cobertura."),O(.5),O(.3),O(1),S(1,NA),O(.036)]],
+["Bolo de Milho","f",1076,[O(.5),O(.5),O(.3),O(1),S(1,NA),S(.04,"Protege o óleo e o leite de coco.")]],
+["TATS Coin Branco","x",100,[X,O(.5),X,X,X,X]],
+["TATS Coin Preto","x",100,[X,O(.5),X,X,X,X]],
+["Cookie Proteico de Coco","f",1071,[X,O(.5),O(.3),O(1),S(1,NA),S(.045,"Protege manteiga e coco contra rancidez.")]],
+["Crostini de Parmesão","x",200,[X,O(.5),O(.3),S(1,"Sem fermento químico, o propionato de cálcio pode ser usado. O Natu Cheese já traz propionato de cálcio."),O(1),O(.015,"Teor de gordura baixo – efeito desprezível.")]],
+["Tiramisu Vegano","c",723,[S(.4,"No creme de castanha."),S(.5,"No creme de castanha (ajuda o sorbato a agir)."),O(.3),O(1),O(1),O(.013,"Teor de gordura baixo – efeito desprezível.")]],
+["Panna Cotta Vegana com Frutas Vermelhas","c",752,[S(.4,"No creme."),S(.5,"Na geleia."),S(.3,"Na geleia (cor)."),O(1),O(1),O(.018,"Teor de gordura baixo – efeito desprezível.")]],
+["Tapioca Cremosa","c",138,[S(.4,"Adicionar após o cozimento."),O(.5,T),O(.3),O(1),O(1),O(.032)]],
+["Mousse de Maracujá","c",300,[S(.4,"Junto com a polpa de maracujá."),O(.5),S(.3,"Preserva cor e aroma do maracujá."),O(1),O(1),O(.017,"Teor de gordura baixo – efeito desprezível.")]],
+["Alfajor de Pistache e Frutas Vermelhas","f",1000,[S(.5,"No brigadeiro de pistache e na geleia."),S(.5,"Na geleia."),S(.3,"Na geleia (cor)."),O(1),S(1,NA),S(.042,"Protege a gordura do pistache e do óleo de coco.")]],
+["Tartelete de Limão","f",1000,[S(.5,"No creme de limão."),O(.5),O(.3),O(1),S(1,NA),S(.04,"Na massa (farinha de amêndoas + óleo de girassol).")]],
+["Pudim","c",795,[S(.4,"Na massa, antes de assar."),O(.5,T),O(.3),O(1),O(1),O(.024)]],
+["Bolo Matilda","f",1000,[S(.5,"Na ganache."),O(.5),O(.3),O(1),S(1,NA),S(.055,"Protege óleo e chocolate da ganache.")]],
+["Bolo de Chocolate com Brigadeiro","f",1200,[S(.5,"Na calda de brigadeiro."),O(.5),O(.3),O(1),S(1,NA),O(.033)]],
+["Bolo de Churros","f",1280,[S(.5,"Na calda de doce de leite."),O(.5),O(.3),O(1),S(1,NA),O(.037)]]
+];
+const rec=document.getElementById("rec"),w=document.getElementById("w"),res=document.getElementById("res"),meta=document.getElementById("meta");
+R.forEach((r,i)=>rec.add(new Option(r[0],i)));
+const fmt=n=>n.toLocaleString("pt-BR",{maximumFractionDigits:3});
+function opt(k,type,e){
+  if(e[2])return e[2];
+  if(k===3&&type==="f")return "Permitido, mas o cálcio reage com o fermento químico – prefira o propionato de sódio.";
+  if((k===3||k===4)&&type==="c")return "Permitido, mas pouco eficaz em sobremesas lácteas/cremosas – prefira o sorbato.";
+  return "Permitido, mas não necessário para este produto.";
+}
+function render(){
+  const r=R[rec.value],g=parseFloat(String(w.value).replace(",","."));
+  meta.textContent="Lote de referência da tabela: "+fmt(r[2])+" g";
+  if(!(g>0)){res.innerHTML='<div class="empty">Informe o peso para calcular.</div>';return}
+  let sug="",op="",no=[];
+  r[3].forEach((e,k)=>{
+    if(!e){no.push(NAMES[k]);return}
+    const q=g*e[1]/1000;
+    let note=e[0]==="S"?e[2]:opt(k,r[1],e);
+    let extra="";
+    if(q>0&&q<0.1){extra=k===5?"Menos de 0,1 g: dilua no óleo/gordura da receita.":"Menos de 0,1 g: use solução-mãe a 10% (≈ "+fmt(q/0.1)+" mL)."}
+    if(k===4&&q>0)extra+=(extra?" ":"")+"Pese direto e peneire 2× junto com a farinha; se não der, dissolva no líquido da massa.";
+    const h='<div class="item '+e[0]+'"><div class="top"><div><div class="nm">'+NAMES[k]+'</div><span class="tag">'+(e[0]==="S"?"Sugerido":"Opcional")+'</span></div><div class="qty">'+fmt(q)+' <small>g</small></div></div><p class="note">'+note+'</p>'+(extra?'<p class="sol">'+extra+'</p>':"")+'</div>';
+    if(e[0]==="S")sug+=h;else op+=h;
+  });
+  let out="";
+  if(sug)out+=sug;else out+='<div class="no">Nenhum conservante é sugerido para este produto.</div>';
+  if(op)out+='<h2>Opcionais</h2>'+op;
+  if(no.length)out+='<h2>Não permitidos nesta categoria</h2><div class="no">'+no.join("; ")+'.</div>';
+  res.innerHTML=out;
+}
+rec.addEventListener("change",render);w.addEventListener("input",render);render();
+</script>
+</body>
+</html>
